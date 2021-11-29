@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1638121091 source:c:\users\seef\desktop\coding\fs\main.cpp
+	"game_tools.h"
+
+1638207077 c:\users\seef\desktop\coding\fs\game.h
+	<iostream>
+	<string>
+
+1638208577 source:c:\users\seef\desktop\coding\fs\game.cpp
+	"Game.h"
+
+1638124150 source:c:\users\seef\desktop\coding\fs\game_tools.cpp
+	"game_tools.h"
+
+1638205096 c:\users\seef\desktop\coding\fs\game_tools.h
+	"Game.h"
+
