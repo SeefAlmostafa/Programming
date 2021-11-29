@@ -3,7 +3,7 @@ using namespace std;
 #include <iostream>
 #define n 3
 
-void printMatrix(int (&matrix)[n][n]);
+void printMatrix(int(&matrix)[n][n]);
 
 int main()
 {
@@ -12,10 +12,10 @@ int main()
 	return 0;
 }
 
-void printMatrix(int (&matrix)[n][n]) {
+void printMatrix(int(&matrix)[n][n]) {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
-			cout << matrix[i][j]<<"\t";
+			cout << matrix[i][j] << "\t";
 		}
 		cout << endl << endl << endl;
 	}
