@@ -15,7 +15,7 @@ int abs_max(vector <float> vec, int n) {
 
 	else {
 		maxIndex = 0;
-		i = 1;
+		i = 1; // start from the second element
 
 		if (vec[0] < 0) {
 			Max = -vec[0];
@@ -52,4 +52,8 @@ int main()
 	system("pause");
 	return 0;
 }
+
+// Test1: if(n <= 0)  -> max_index = -1	there is only 1 element  exp: arr[] =  { }        
+// test2: if(n == 1) -> max_index  = 0  there is only 1 element  exp: arr[1] = {4} 
+// test3: if(n > 1)  -> max_index  = abhaengig vom Vector
 
