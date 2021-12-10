@@ -4,10 +4,6 @@ using namespace std;
 #include "PhysicianRobot.h"
 #include <vector>
 
-
-
-
-
 int main()
 {
 
@@ -18,7 +14,7 @@ int main()
 	Robot helpBot("instagramBot", 5);
 	Robot serverBot("TwitterBot");
 	serverBot.set_health(49);
-
+	
 
 	// intrdoucing the Bots
 	Bot.introduce();
@@ -31,10 +27,15 @@ int main()
 	// Enter Bots Numbers
 	double n1 = 0.0, n2 = 0.0;
 	char op = ' ';
-
-	double result = Bot.calculate(n1, n2, op);
-	cout << "Bot Calculation is:" << result << endl;
-
+	
+	try {
+		double result = Bot.calculate(n1, n2, op);
+		cout << "Bot Calculation is:" << result << endl;
+	}
+	catch (string& m) {
+		cerr << m << endl;
+	}
+	
 	// create Physician Robot 
 	PhysicianRobot py_rp;
 	py_rp.heal(serverBot);
@@ -50,8 +51,9 @@ int main()
 		length--;
 		i++;
 	}
-
+	
 	system("pause");
+	
 	return 0;
 }
 
