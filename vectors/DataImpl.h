@@ -83,19 +83,19 @@ template <class D>
 void Data<D>::Data::insert_data() {
 	D temp;
 	bool valid_data = true;
+
 	setSize();
 	cout << "|| insert into the list" << endl;
 	do {
 		if (data.size() < this->getSize()) {
 			cout << "|| data:";
-			cin >> temp;
+			getline(cin, temp);
+			if (temp == "") continue;
 			valid_data = (!exit_keys(temp));
+
 			valid_data ? data.push_back(temp) : throw msg;
 			if (mode == File) {
 				file << temp << endl;
-			}
-			else {
-				continue;
 			}
 		}
 		else {

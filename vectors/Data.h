@@ -8,7 +8,6 @@ using namespace std;
 #include <algorithm>
 #include <fstream>
 
-
 enum choise { File = 1, screen = 2 };
 
 template <class D>
