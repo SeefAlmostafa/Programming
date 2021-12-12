@@ -43,7 +43,7 @@ void Data<D>::Data::printData() {
 template <class D>
 void Data<D>::Data::setSize() {
 	int size;
-	cout << "Enter a size:";
+	cout << "|| Enter a size:";
 	cin >> size;
 	if (!allowedSize()) {
 		cout << "|| vector can not be created\n";
