@@ -5,7 +5,7 @@ const string msg = "\n(Exit/exit) are invalid names\n";
 
 template <class D>
 Data<D>::Data(int size) {
-	choiseMode();
+	chooseMode();
 	if (mode == screen) {
 		cout << "|| Screen Mode" << endl;
 	}
@@ -45,7 +45,7 @@ void Data<D>::Data::setSize() {
 	int size;
 	cout << "|| Enter a size:";
 	cin >> size;
-	if (!allowedSize()) {
+	if (!vaildSize()) {
 		cout << "|| vector can not be created\n";
 		exit(-1);
 	}
@@ -58,12 +58,12 @@ int Data<D>::Data::getSize() {
 }
 
 template <class D>
-bool Data<D>::Data::allowedSize() {
+bool Data<D>::Data::vaildSize() {
 	return this->getSize() > 0;
 }
 
 template <class D>
-void Data<D>::Data::choiseMode() {
+void Data<D>::Data::chooseMode() {
 	int m = 0;
 	cout << "|| Enter a print mode[1/2]:";
 	cin >> m;

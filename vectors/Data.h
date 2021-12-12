@@ -19,15 +19,15 @@ private:
 	choise mode;
 	ofstream file;
 	string fileName;
-	bool allowedSize();
+	bool vaildSize();
 
 public:
 	~Data();
 	Data(int size = 10);
+	void chooseMode();
 	void setSize();
 	int getSize();
 	void printData();
-	void choiseMode();
 	void get_fname();
 	void insert_data();
 	bool exit_keys(string& data);
