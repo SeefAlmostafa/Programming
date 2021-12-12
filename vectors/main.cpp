@@ -1,5 +1,5 @@
 /*
-* **************************************************************************
+	************************************************************************
 	* choiseMode()	  :  users can choise between (file,screen) as printmode
 	* exit_keys()     :  exit/Exit to stop any insertion of data on a screen
 	* insert_data()   :  The data can be inserted into a file or into screen
