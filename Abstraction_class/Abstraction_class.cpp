@@ -93,8 +93,9 @@ public:
 
 
 	// pure functions 
-	virtual void  show_info() = 0;
-	virtual void  Take_A_Selfie() = 0;
+	virtual void show_info() = 0;
+	virtual void Take_A_Selfie() = 0;
+	virtual void MakeACall() = 0;
 
 };
 
@@ -133,6 +134,9 @@ public:
 	virtual void  Take_A_Selfie() {
 		cout << "NOKIA \tSelfie is taken" << endl;
 	}
+	virtual void MakeACall() {
+		cout << "NOKIA \tis calling.." << endl;
+	}
 };
 
 class Iphone :public Smartphone {
@@ -167,6 +171,9 @@ public:
 
 	virtual void  Take_A_Selfie() {
 		cout << "Iphone \tSelfie is taken" << endl;
+	}
+	virtual void MakeACall() {
+		cout << "Iphone \tis calling.." << endl;
 	}
 };
 
@@ -203,6 +210,9 @@ public:
 	virtual void  Take_A_Selfie() {
 		cout << "Samsung Selfie is taken" << endl;
 	}
+	virtual void MakeACall() {
+		cout << "Samsung is calling.." << endl;
+	}
 };
 
 class Huawei :public Smartphone {
@@ -236,7 +246,10 @@ public:
 	}
 
 	virtual void  Take_A_Selfie() {
-		cout << "Huawei \tSelfie is taken" << endl;
+		cout << "HUAWEI \tSelfie is taken" << endl;
+	}
+	virtual void MakeACall() {
+		cout << "HUAWEI \tis calling.." << endl;
 	}
 };
 
@@ -258,6 +271,14 @@ int main() {
 	s4->Take_A_Selfie();
 
 	cout << "\n\n";
+
+	s1->MakeACall();
+	s2->MakeACall();
+	s3->MakeACall();
+	s4->MakeACall();
+
+	cout << "\n\n";
+
 	delete s1;
 	s1 = nullptr;
 	delete s2;
@@ -317,8 +338,14 @@ c_location:     china
 
 Iphone  Selfie is taken
 Samsung Selfie is taken
-Huawei  Selfie is taken
+HUAWEI  Selfie is taken
 NOKIA   Selfie is taken
+
+
+Iphone  is calling..
+Samsung is calling..
+HUAWEI  is calling..
+NOKIA   is calling..
 
 
 Iphone  102 pro with the follwing       ID =1   is destroyed
