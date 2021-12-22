@@ -1,6 +1,7 @@
 
 #include <iostream>
 using namespace std;
+#include <string>
 
 float bestimmeEndkapital(float startkapital, int kundenPrio)
 {
@@ -35,9 +36,13 @@ int main() {
 	cout << "endkapital:" << endkapital << endl;
 
 
-	return 0;
-
 	
+	string t1, t2, t3, t4, t5, t6, t7, t8, t9, t10;
+	t1 = "Einfache bedingungueberdeckung:\n";
+	t2 = "											startkapital < 10000			kundenPrio == 1			startkapital > 50000			kundenPrio == 3\n";
+	t3 = "startkapital:9999, kundenPrio:3				true						     false		            false							true\n";
+	t4 = "startkapital:60000,kundenPrio:1				false						     true			        true	               			false\n";
+	cout << t1 << t2 << t3 << t4;
 }
 
 /*
