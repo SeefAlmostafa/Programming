@@ -3,15 +3,6 @@
 using namespace std;
 #include <string>
 
-
-/*
-
-
-
-
-*/
-
-
 float bestimmeEndkapital(float startkapital, int kundenPrio)
 {
 	float aktKapital, endkapital;
@@ -71,10 +62,11 @@ startkapital:9999,kundenPrio:3 		true                            true           
 
 Mehrfachbedingungueberdeckung:
 									startkapital < 10000            kundenPrio == 1         startkapital > 50000    kundenPrio == 3
-startkapital:9999, kundenPrio:3		true                            false                   false                   true
-startkapital:60000,kundenPrio:1		true                            true                    false                   false
-startkapital:60000,kundenPrio:1		true                            false                   false                   false
-startkapital:9999,kundenPrio:3		true                            true                    false                   false
+									true                            false                   false                   true
+									true                            true                    false                   false
+									true                            false                   false                   false
+									true                            true                    false                   false
+
 
 */
 
