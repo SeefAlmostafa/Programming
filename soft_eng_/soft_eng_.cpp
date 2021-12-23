@@ -78,9 +78,9 @@ s:9999,k:1		true			  			    true					true		false		 					false					false
 Einfache bedingungueberdeckung:
 
 
-                                									startkapital < 10000                    kundenPrio == 1         startkapital > 50000            kundenPrio == 3	
-startkapital:9999, kundenPrio:3										true                                    false                   false                           true
-startkapital:60000,kundenPrio:1										false                                   true                    true                            false
+                                			startkapital < 10000                    kundenPrio == 1         startkapital > 50000            kundenPrio == 3	
+startkapital:9999, kundenPrio:3				true                                    false                   false                           true
+startkapital:60000,kundenPrio:1				false                                   true                    true                            false
 
 Mehrfachbedingungueberdeckung:
 
