@@ -41,9 +41,9 @@ int main() {
 	t1 = "Mehrfachbedingungueberdeckung:\n";
 	t2 = "startkapital < 10000\t\tkundenPrio == 1\t\tstartkapital > 50000\tkundenPrio == 3\t\n";
 	t5 = "true\t\t\t\tfalse\t\t\tfalse\t\t\ttrue\t\t\n";
-	t6 = "true\t\t\t\ttrue\t\t\tfalse\t\t\tfalse\t\t\n";
-	t7 = "true\t\t\t\tfalse\t\t\tfalse\t\t\tfalse\t\t\n";
-	t8 = "true\t\t\t\ttrue\t\t\tfalse\t\t\tfalse\t\t\n";
+	t6 = "false\t\t\t\ttrue\t\t\ttrue\t\t\tfalse\t\t\n";
+	t7 = "true\t\t\t\ttrue\t\t\tfalse\t\t\tfalse\t\t\n";
+	t8 = "false\t\t\t\tfalse\t\t\ttrue\t\t\ttrue\t\t\n";
 	cout << t1 << t2  << t5 << t6<<t7<<t8;
 }
 
@@ -68,13 +68,21 @@ startkapital:9999,kundenPrio:3 		true                            true           
 
 
 /*
+Mehrfachbedingungueberdeckung:
+									startkapital < 10000              kundenPrio == 1         startkapital > 50000       	  kundenPrio == 3
+startkapital:9999,kundenPrio:3		true                              false                   false                           true
+startkapital:60000,kundenPrio:1		false                             true                    true                            false
+startkapital:9999,kundenPrio:1		true							  true                    false                           false
+startkapital:60000,kundenPrio:3		false                             false                   true		                      true
+
+
 
 Mehrfachbedingungueberdeckung:
-															startkapital < 10000            kundenPrio == 1         startkapital > 50000    kundenPrio == 3
-startkapital:9999,kundenPrio:3									true                            false                   false                   true
-startkapital:60000,kundenPrio:1									true                            true                    false                   false
-startkapital:60000,kundenPrio:1									true                            false                   false                   false
-startkapital:9999,kundenPrio:3									true                            true                    false                   false
+								startkapital < 10000            kundenPrio == 1         startkapital > 50000    kundenPrio == 3
+startkapital:9999,kundenPrio:3					true                            false                   false                   true
+startkapital:60000,kundenPrio:1					false                           true                    true                    false
+startkapital:9999,kundenPrio:1					true                            true                    false                   false
+startkapital:60000,kundenPrio:3					false                           false                   true                    true
 
 */
 
