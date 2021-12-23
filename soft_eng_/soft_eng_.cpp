@@ -56,10 +56,11 @@ startkapital:9999, kundenPrio:3		true                                    false  
 startkapital:60000,kundenPrio:1		false                                   true                    true                            false
 
 
+
 Minmale mehrfachbedingungueberdeckung:
                                		startkapital < 10000            kundenPrio == 1         E1      startkapital > 50000    kundenPrio == 3         E2
-startkapital:9999,kundenPrio:1		true						    true                    true    false                    false                  false
-startkapital:9999,kundenPrio:3 		true                            false                   false   false					 true                   true
+startkapital:9999,kundenPrio:1		true                            true					true	false                   false                   false
+startkapital:9999,kundenPrio:3 		true                            false                   false   false                   true					true
 
 
 
