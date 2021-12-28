@@ -1,5 +1,4 @@
 
-
 using namespace std;
 #include <iostream>
 #include <string>
@@ -45,7 +44,6 @@ public:
 		return color;
 	}
 };
-
 
 class Apartment {
 
@@ -180,16 +178,19 @@ int main() {
 	auto it = a.begin();
 	for (int i = 0; i < a.size(); i++) { it->set_rooms(r); }
 
+
 	// create Elevators & Apartments to the Bank
 	vector<Elevators> e(5);
 	Building Bank;
 	Bank.set_apartment(a);
 	Bank.set_elevators(e);
 
+
 	// show result
 	vector<Apartment>result_apartment = Bank.get_apartment();
 	vector<Elevators>result_elevators = Bank.get_elevators();
 	vector<Room>result_room = it->get_rooms();
+
 
 	cout << "The Bank Apartments capacity:" << result_apartment.size() << endl;
 	cout << "The Bank Elevators  capacity:" << result_elevators.size() << endl;
