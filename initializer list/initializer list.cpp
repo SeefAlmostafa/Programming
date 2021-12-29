@@ -50,3 +50,7 @@ C Destructor
 B Destructor
 A Destructor
 */
+
+//From results: 
+//Constructors are called based on Class data members order
+//NOT initalizer list order
