@@ -12,24 +12,34 @@ public:
 
 class classB {
 private:
-    classA aa; // called
+                // the constructor of classA called twice
+    classA aa; // once called by default constructor  
     int x;
 public:
-    // classA was called twice, due to not using the initialize list
+
+    
     classB(int x) {
-        this->aa = classA(); // called again
+        this->aa = classA(); // second called again inside the constructor
         this->x = x;
     }
+    
+
 };
 
 
 class classC {
+
 private:
     int& y;
     classB bb;
+
 public:
     // classB was called only once due to the initialize list
+
     classC(int& y, const classB& bb):y(y),bb(bb) {} // only one time here called & initialized
+
+   // 1- The only way to initialize a reference is intializer list
+   // 1- The only way to initialize a class that doesn't have default constructor (e.g. Class B)  is intializer list
 };
 
 
@@ -41,6 +51,7 @@ int main(){
 }
 
 /*
-ClassA Constructor
-ClassA Constructor
+    Output:
+    ClassA Constructor
+    ClassA Constructor
 */
