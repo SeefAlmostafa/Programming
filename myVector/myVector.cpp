@@ -8,7 +8,6 @@ private:
     int* arr;
     int len = 100;
 public:
-
     myVector(int len, int defalut_value = 0) {
         this->len = len;
         this->arr = new int[len];
