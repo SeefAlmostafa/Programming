@@ -13,8 +13,8 @@ public:
     }
 
     ~Mynumber() {
-        // delete val1;
-        // val1 = nullptr;
+         delete val1;
+         val1 = nullptr;
     }
 
     Mynumber(const Mynumber& other) {
