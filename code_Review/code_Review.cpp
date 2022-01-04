@@ -19,7 +19,7 @@ private:
     // Side note: in real life, we applications keep track of what users do and analyze it
     // This allows discovering what users do/don't so that we improve their experience
 
-    static int statistics_total_prints;
+    static int statistics_total_prints; // Counter
 
     // Several issues in this function
     // 1- It is public, although for internal usage! Move to private
