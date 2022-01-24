@@ -7,7 +7,7 @@ Vehicle::Vehicle(int wt) {
 	setweight(wt);
 }
 
-int Vehicle::getweight() const {
+int Vehicle::getweight()const {
 	return weight;
 }
 

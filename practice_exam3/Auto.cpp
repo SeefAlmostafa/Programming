@@ -8,6 +8,7 @@ Auto::Auto() {
 }
 
 Auto::Auto(int wt, int sp, char const* nm) {
+	setweight(wt);
 	name = new char[strlen(nm) + 1];
 	strcpy(name, nm);
 }

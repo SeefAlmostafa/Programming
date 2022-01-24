@@ -8,6 +8,6 @@ protected:
 public:
 	Vehicle();
 	Vehicle(int wt);
-	int getweight() const;
+	int getweight()const;
 	void setweight(int wt);
 };
