@@ -30,9 +30,8 @@ private:
     int current;
 
     void destroy() {
-        for (auto currentCar = get_first(); currentCar != get_end();) {
-            delete currentCar;
-            currentCar = get_next();
+        for (int i = 0; i < size;i++) {
+            delete storage[i];
         }
     }
     void copy(const storeCars& other) {
