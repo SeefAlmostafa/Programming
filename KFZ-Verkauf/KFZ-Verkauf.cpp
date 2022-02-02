@@ -2,26 +2,40 @@
 using namespace std;
 #include <iostream>
 
-double calculate_price(double ,double ,double ,int ,double );
+double calculate_price(double baseprice, double specialprice, double extraprice, int extras, double discount);
+double calculate_price(double baseprice, double specialprice, double extraprice, int extras, double discount = 0.0) {
+	
+	double cashDiscount = 0.0, Zubehoerrabatt = 0.0;
 
-int main(){
-	double GesamtPreis = calculate_price(20000.00,3450.00,6000.00,3,10);
-	cout << GesamtPreis << endl;
-	return 0;
+	if (baseprice <= 0.0 || specialprice < 0.0 || extraprice < 0.0 || discount < 0.0) {
+		baseprice = 0.0;	discount = 0.0;	specialprice = 0.0;	extraprice = 0.0;
+	}
+
+	if (extras > 0 && extras < 5) {
+		discount = 10.0;
+		cashDiscount = (discount * baseprice) / 100;
+		Zubehoerrabatt = (extraprice * discount) / 100;
+	}
+
+	else if(extras >= 5) {
+		discount = 15.0;
+		cashDiscount = (discount * baseprice) / 100;
+		Zubehoerrabatt = (extraprice * discount) / 100;
+	}
+
+	else{
+		 discount = 0.0;
+	 }
+
+	return (((baseprice - cashDiscount) + specialprice + extraprice)) - Zubehoerrabatt;
 }
 
 
-double calculate_price(double baseprice,double specialprice,double extraprice,int extras,double discount) {
+int main(){
 
-	double Zubehoerrabatt = 0;
-	bool Bedingung = extras == 3 || extras == 4;
+	// Discount wurde hier nicht übergeben, es wird automatisch berechnet & bestimmt
+	double GesamtPreis = calculate_price(20000.00,3450.00,6000.00,3);
 
-	if (baseprice <= 0 || specialprice < 0 || extraprice < 0 || discount < 0) {
-		baseprice = 0;	discount = 0;	specialprice = 0;	extraprice = 0;
-	}
-
-	Bedingung ? (discount = (10 * baseprice) / 100,  Zubehoerrabatt = (extraprice * 10) / 100) :
-	(discount = (15 * baseprice) / 100, Zubehoerrabatt = (extraprice * 15) / 100);
-
-	return (((baseprice - discount) + specialprice + extraprice)) - Zubehoerrabatt;
+	cout << GesamtPreis << endl;
+	return 0;
 }
