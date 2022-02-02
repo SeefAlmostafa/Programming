@@ -24,6 +24,7 @@ double calculate_price(double baseprice, double specialprice, double extraprice,
 	}
 
 	else{
+		 cout << "extras kann nicht kleiner oder gleich 0 sein !" << endl;
 		 discount = 0.0;
 	 }
 
@@ -34,6 +35,7 @@ double calculate_price(double baseprice, double specialprice, double extraprice,
 int main(){
 
 	// Discount wurde hier nicht übergeben, es wird automatisch berechnet & bestimmt
+	// bessere Lösung !
 	double GesamtPreis = calculate_price(20000.00,3450.00,6000.00,3);
 
 	cout << GesamtPreis << endl;
