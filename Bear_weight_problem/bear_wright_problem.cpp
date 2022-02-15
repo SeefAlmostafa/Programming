@@ -2,7 +2,7 @@ using namespace std;
 #include <iostream>
 
 int main(){
-    int res = 0; // first year
+    int year = 0; // first year
     int s,b;     // s = sam's weight, b = weight of Bob
     cout << "Enter the weight of sam:";
     cin >> s;
@@ -12,9 +12,9 @@ int main(){
     while(s <= b){ // as long sam's wight <=  Bob's weight
         s *= 3;    // then keep counting years
         b *= 2;                     
-        ++res;
+        ++year;
     }
-    cout <<"Years:"<< res << endl; 
+    cout <<"Years:"<< year << endl; 
     return 0;
 }
 
