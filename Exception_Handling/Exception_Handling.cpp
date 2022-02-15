@@ -27,8 +27,8 @@ int main(){
         cout << "Nenner kann nicht negativ sein"<<endl;
     }
 
-        catch(Error &e){
-            cout << "Nenner kann nicht null sein" << endl;
+    catch(Error &e){
+        cout << "Nenner kann nicht null sein" << endl;
     }
 
     return 0;
