@@ -2,10 +2,11 @@ using namespace std;
 #include <iostream>
 
 class Mynumber {
-private:
+   private:
     int* val1;
     int val2;
-public:
+
+   public:
     Mynumber(int x = 3, int y = 5) {
         val1 = new int;
         *val1 = x;
@@ -26,15 +27,14 @@ public:
 
     void printValuesAndAddress() {
         cout << "val1:" << *val1 << " " << val1 << endl;
-        cout << "val2:" << val2 << " " << &val2 << endl << endl;
+        cout << "val2:" << val2 << " " << &val2 << endl
+             << endl;
     }
 };
 
-
 int main() {
-
-    Mynumber a;       
-    Mynumber b(a);   
+    Mynumber a;
+    Mynumber b(a);
     cout << "\n";
     a.printValuesAndAddress();
     b.printValuesAndAddress();
