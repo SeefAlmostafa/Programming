@@ -9,7 +9,7 @@ int readLength() {
     cout << "Enter length:";
     cin >> len;
     if (len % 2 == 0) {
-        throw(const char*) "Even Numbers are invaild";
+        throw(const char*) "Even Numbers are invalid";
     }
     return len;
 }
@@ -55,6 +55,7 @@ int main() {
         int path = 0;
         srand(time(NULL));
         const int len = readLength();
+
         int* arr = new int[len * len]{0};
 
         generateArray(arr, len);
