@@ -4,16 +4,20 @@ using namespace std;
 
 int main() {
     int i = 0;
-    int n, t;
+    int n;
+
+    cout << "-------||Input||-------" << endl;
     cin >> n;
-    t = n;
+    const int t = n;
 
     string word;
-    string save[n];
+
+    // allocate an array of strings in the heap
+    string* save = new string[t];
 
     while (n > 0) {
         // word = "";
-        int len = 0;
+        size_t len = 0;
         cin >> word;
         len = word.size();
         if (len > 10) {
@@ -26,25 +30,31 @@ int main() {
         n--;
     }
 
+    cout << "\n-------||Output||-------" << endl;
+
     for (i = 0; i < t; i++) {
         cout << save[i] << endl;
     }
+
+    // free the memory that was allocated
+    delete[] save;
+    save = nullptr;
 
     return 0;
 }
 
 /*
-    input:
-    4
-    word
-    localization
-    internationalization
-    pneumonoultramicroscopicsilicovolcanoconiosis
+        -------||Input||-------
+        4
+        word
+        localization
+        internationalization
+        pneumonoultramicroscopicsilicovolcanoconiosis
 
-    output:
-    word
-    l10n
-    i18n
-    p43s
+        -------||Output||-------
+        word
+        l10n
+        i18n
+        p43s
 
  */
