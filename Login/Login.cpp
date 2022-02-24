@@ -3,35 +3,56 @@
 #include <string>
 using namespace std;
 
+// prototypes
+void Login(string& Username, string& password);                       // call by reference
+bool checkLogin(const string& myUsername, const string& myPassword);  // call by reference
 
-void Login(string* Username, string* password);
-bool checkLogin(string myUsername, string myPassword);
+// function 1
+bool checkLogin(const string& myUsername, const string& myPassword) {
+    /*
+     we used const to ensure that the function checkLogin(..) will not
+     change the data (myUsername,myPassword) when receiving it
+     the function checkLogin(..) can read but not write something on the data
+     const is a good practice in c++
+     .
+     .
+     */
+    bool input = (myUsername == "User027" && myPassword == "12345");
 
-bool checkLogin(string myUsername, string myPassword) {
-	bool eingabe = myUsername == "saiflam" && myPassword == "12345";
-	if (eingabe == true)
-		return true;
-	else
-		return false;
+    if (input) {
+        cout << "Login successed\n\n";
+        return true;
+    }
+
+    else {
+        cout << "Login failed\n\n";
+        return false;
+    }
 }
 
-void Login(string* username, string* password) {
-	cout << "Enter your Username:";
-	cin >> *username;
-	cout << "Enter your Password:";
-	cin >> *password;
+// function 2
+void Login(string& username, string& password) {
+    // we did not use const here, because we want to change the data
+    cout << "Enter your Username :";
+    cin >> username;
+    cout << "Enter your Password :";
+    cin >> password;
+
+    cout << "\n";
 }
 
-int main()
-{
-	string username;
-	string password;
-	do {
-		Login(&username, &password);
-	} while (!checkLogin(username, password));
+// main function
+int main() {
+    string username;
+    string password;
 
-	cout << "Login efolgreich" << endl;
+    cout << "\n\n\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2";
+    cout << "  LOGIN TO FACEBOOK  ";
+    cout << "\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n\n";
 
-	system("pause");
-	return 0;
+    do {
+        Login(username, password);              // please keep trying to login,
+    } while (!checkLogin(username, password));  // while password is wrong
+
+    return 0;
 }
