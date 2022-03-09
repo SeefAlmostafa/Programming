@@ -1,6 +1,6 @@
-
 using namespace std;
 #include <ctype.h>
+#include <stdio.h>
 
 #include <cstring>
 #include <ctime>
@@ -18,7 +18,7 @@ class Pendu {
     string chosenWord;
     void DrawMan();
 
-    unsigned int remainingTries;
+    int remainingTries;
     bool gameOver;
     char letter;
 
@@ -28,12 +28,12 @@ class Pendu {
 
     // Setters & Getters
     void set_secretWord(string secretWord);
-    void set_remainingTries(unsigned int remainingTries);
+    void set_remainingTries(int remainingTries);
     void set_letter(char letter);
 
     // think of inline functions
     string get_secretWord() const;
-    unsigned int get_remainingTries() const;
+    int get_remainingTries() const;
     char get_letter() const;
 
     // Functions
