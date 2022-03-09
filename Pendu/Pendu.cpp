@@ -13,7 +13,7 @@ void Pendu::set_secretWord(string secretWord) {
     this->secretWord = secretWord;
 }
 
-void Pendu::set_remainingTries(unsigned int remainingTries) {
+void Pendu::set_remainingTries(int remainingTries) {
     this->remainingTries = remainingTries;
 }
 
@@ -25,7 +25,7 @@ string Pendu::get_secretWord() const {
     return this->secretWord;
 }
 
-unsigned int Pendu::get_remainingTries() const {
+int Pendu::get_remainingTries() const {
     return this->remainingTries;
 }
 
@@ -35,15 +35,19 @@ char Pendu::get_letter() const {
 
 void Pendu::Play() {
     Display();
+
     bool playerWins = win();
+
     if (playerWins) {
-        cout << "*****************" << endl;
+        cout << "\n*****************" << endl;
         cout << "*    YOU WIN    *" << endl;
         cout << "*****************" << endl;
+        cout << "The secret word was: " << get_secretWord() << endl;
     } else {
-        cout << "*****************" << endl;
+        cout << "\n*****************" << endl;
         cout << "*    YOU LOSE    *" << endl;
         cout << "*****************" << endl;
+        cout << "The secret word was: " << get_secretWord() << endl;
     }
     Reset();
 }
@@ -53,44 +57,48 @@ void Pendu::Run() {
 }
 
 void Pendu::init() {
-    set_secretWord(chosenWord);
-    try {
-        if (!find_word())
-            throw(string) "the program failed to generete a word";
-    } catch (...) {
-    }
-
-    try {
-        wordsize = (int)secretWord.size();
-        if (wordsize <= 0) {
-            throw(string) "secret Word Size can not be <= 0";
-        }
-    } catch (...) {
-    }
+    set_secretWord("");
     i = 0;
     set_remainingTries(10);
     set_letter(0);
-    gameOver = (get_remainingTries() == 0 && win());
-    foundLetter = new int[wordsize]{0};
+    gameOver = false;
 }
 
 void Pendu::Display() {
-    cout << "Welcome..." << endl;
     DrawMan();
+    cout << "Welcome..." << endl;
     cout << "I am thinking of a word:" << endl;
-    while (!gameOver) {
-        cout << "\n\nYou have " << get_remainingTries() << "remaining tries" << endl;
-        cout << "\nwhat is the secret word?" << endl;
-        if (foundLetter[i]) {
-            cout << secretWord[i];
-        } else {
-            cout << "*";
+
+    try {
+        if (!find_word())
+            throw(string) "the program failed to generete a word";
+        else {
+            set_secretWord(chosenWord);
+            wordsize = (int)secretWord.size();
+            foundLetter = new int[wordsize]{0};
+            if (wordsize <= 0) {
+                throw(string) "secret Word Size can not be <= 0";
+            }
         }
-        cout << "Suggest a letter : ";
-        letter = readCharacter();
-        if (!findLetter()) {
-            remainingTries--;
+
+        while (!gameOver) {
+            cout << "\nYou have " << get_remainingTries() << " remaining tries" << endl;
+            cout << "\nwhat is the secret word?" << endl;
+            for (i = 0; i < wordsize; i++) {
+                if (foundLetter[i]) {
+                    cout << secretWord[i];
+                } else {
+                    cout << "*";
+                }
+            }
+            cout << "\nSuggest a letter : ";
+            letter = readCharacter();
+            if (!findLetter()) {
+                remainingTries--;
+            }
+            gameOver = (get_remainingTries() <= 0 || win());
         }
+    } catch (...) {
     }
 }
 
@@ -114,17 +122,11 @@ void Pendu::DrawMan() {
 }
 
 void Pendu::Reset() {
-    cout << "Press Y to play again...";
-    if (getchar() == 'Y' || 'y') {
-        init();
-    } else {
-        cout << "The game was exited successfully" << endl;
-        return;
-    }
+    init();
 }
 
 char Pendu::readCharacter() {
-    char character = 0;
+    char character;
     character = getchar();
     character = toupper(character);
     while (getchar() != '\n') {
@@ -147,7 +149,7 @@ bool Pendu::find_word() {
     }
 
     // first count all the words in the file
-    while (getline(file, word)) {
+    while (file >> word) {
         wordsNumber++;
         lines.push_back(word);  // store the words that we read in the file
     }
@@ -159,18 +161,18 @@ bool Pendu::find_word() {
     // Start reading from the beginning and stop when finding the right word
     file.clear();
     file.seekg(0);
-    while (getline(file, word) && chosenWordNumber > 0) {
+    while (file >> word && chosenWordNumber > 0) {
         chosenWordNumber--;
     }
 
-    chosenWord[chosenWord.size() - 1] = '\0';
+    // chosenWord[chosenWord.size() - 1] = '\0';
     file.close();
     return true;
 }
 
 int Pendu::aleatoryNumber(int maxNumber) {
     // generate a random number
-    srand(time(NULL));
+    srand(time(0));
     return rand() % maxNumber;
 }
 
