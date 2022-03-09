@@ -55,6 +55,9 @@ int main() {
     // print _2D_array
     print_2D_array(_2D_array);
 
+    cout << "\n";
+    system("pause");
+
 }  // delete will happen here because all the arrays are in stack !
 
 /*
