@@ -17,6 +17,7 @@ vector<string> Read_From_File(string filePath) {
             while (getline(myfile, line)) {
                 lines.push_back(line);
             }
+            myfile.close();
         } else {
             cerr << "unable to open file\n";
         }
