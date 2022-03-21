@@ -1,61 +1,91 @@
-﻿#include <ctime>
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
+﻿#include "Scam.h"
 
-/*
-    this program should generate fake emails,
-    which will be sent to the hackers database who try to win
-    some victims data from some youtubers !
-    Please notice that the goal of this Code is to lean and not to harm any other users..
-    i clarify here clearly that i am not responsible for any harming issues
-*/
+Scam::Scam() { init(); }
+Scam::~Scam() { cout << "Scam Process is Done !" << endl; }
 
-class Scam {
-   private:
-    int max;
-    string Mail[3];
-    vector<string> fakeEmails;
+void Scam::init() {
+    srand(time(NULL));
+    set_max();
+    set_Mail();
+}
 
-   public:
-    Scam() { init(); }
-    ~Scam() { cout << "Scam Process is Done !" << endl; }
+void Scam::set_Mail() {
+    this->Mail[0] = "@hotmail.com";
+    this->Mail[1] = "@gmail.com";
+    this->Mail[2] = "@yahoo.com";
+}
 
-    inline void set_max(int max = 9999) { this->max = max; }
-    inline int get_max() const { return max; }
+string Scam::get_Mail(int index) {
+    try {
+        if (index < 0 || index > 3) {
+            throw "Index is out of Range";
+        }
 
-    void init() {
-        set_max();
-        set_Mail();
+    } catch (const char* msg) {
+        cerr << msg << endl;
+    }
+    return Mail[index];
+}
+
+string Scam::get_Random_Mail() {
+    int index = rand() % (int)mail_size;
+    return get_Mail(index);
+}
+
+string Scam::randomPassword(int length = 12) {
+    string newPassword;
+    string possiblePassword = "0123456789!@#$%^&*abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int password_length = sizeof(possiblePassword) - 1;
+    for (int i = 0; i < length; i++) {
+        newPassword += (char)possiblePassword[rand() % password_length];
+    }
+    return newPassword;
+}
+
+void Scam::Read_from_file(const char* path) {
+    string line, newMail, newPassword;
+    ifstream file(path);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            newPassword = randomPassword();
+            newMail = (line + to_string(get_Random_Number()) + get_Random_Mail() + "\t\t\t\t\t\t\t\t\t\t\t\t" + newPassword);
+
+            if (newMail.empty()) {
+                break;
+            } else {
+                fakeEmails.push_back(newMail);
+            }
+        }
+        file.close();
+
+    } else {
+        cout << "Unable to open file";
+    }
+}
+
+void Scam::showfakeEmails() {
+    auto it = fakeEmails.begin();
+    for (; it != fakeEmails.end(); it++) {
+        cout << *it << endl;
+    }
+    cout << endl;
+}
+
+void Scam::wrtieFakeEmails(const char* path) {
+    write_to_file(path);
+}
+
+void Scam::write_to_file(const char* path) {
+    ofstream file;
+    file.open(path);
+
+    for (int i = 0; i < fakeEmails.size(); ++i) {
+        file << fakeEmails[i] << endl;
     }
 
-    void set_Mail() {
-        this->Mail[0] = "@Hotmail.com";
-        this->Mail[1] = "@Gmail.com";
-        this->Mail[2] = "@Yahoo.com";
-    }
+    file.close();
+}
 
-    string& get_Mail(int index) const {
-    }
-
-    void Read_from_file() {
-    }
-
-    void write_to_file() {
-    }
-
-    int get_Random_Number() {
-        srand(time(NULL));
-        int random_number = rand() % max + 1;
-    }
-
-    void Generate_Fake_Emails() {
-    }
-};
-
-int main() {
-    Scam scam;
-    return 0;
+void Scam::Generate_Fake_Accounts(const char* path) {
+    Read_from_file(path);
 }
