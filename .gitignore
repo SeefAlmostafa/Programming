@@ -462,3 +462,5 @@ punish_hackers/main.cpp
 .gitignore
 .gitignore
 .gitignore
+scam/main.cpp
+scam/result/accounts.txt
