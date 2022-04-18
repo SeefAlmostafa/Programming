@@ -35,5 +35,6 @@ int main() {
     printf("%.2f", floatNumber);
     printf("%s\n", missedNumber);
 
+    system("pause");
     return 0;
 }
