@@ -35,6 +35,7 @@ int main() {
     func();
     A a3;  // local variable
     A x[3];
+    system("pause");
     return 0;
 }
 
